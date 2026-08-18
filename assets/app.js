@@ -376,6 +376,74 @@ var rsModal = simpleModal({
   }
 });
 
+/* contact an expert */
+var CE_TOPICS = ['Buying a yacht','Selling a yacht','Experiences & events','Service & maintenance','General inquiry'];
+var cePicked = [];
+var cePicker = document.getElementById('ce-picker');
+var ceMenu = document.getElementById('ce-menu');
+var ceWrap = document.getElementById('ce-topics');
+
+function ceRender(){
+  if(!cePicker) return;
+  var chips = cePicked.map(function(t){
+    return '<span class="rs-chip">' + t +
+           '<button type="button" data-cedrop="' + t + '" aria-label="Remove ' + t + '">' +
+           '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></span>';
+  }).join('');
+  cePicker.innerHTML = (chips || '<span class="rs-ph">Select a topic</span>') +
+    '<svg class="chev" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  ceMenu.innerHTML = CE_TOPICS.map(function(t){
+    var on = cePicked.indexOf(t) > -1;
+    return '<div class="rs-opt' + (on ? ' on' : '') + '" role="option" aria-selected="' + on + '" data-cepick="' + t + '">' +
+           '<span class="st-box"' + (on ? ' style="background:var(--navy);border-color:var(--navy)"' : '') + '>' +
+           '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:' + (on ? 1 : 0) + '"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+           t + '</div>';
+  }).join('');
+}
+if(cePicker){
+  ceRender();
+  cePicker.addEventListener('click', function(e){
+    var drop = e.target.closest('[data-cedrop]');
+    if(drop){
+      e.stopPropagation();
+      cePicked = cePicked.filter(function(t){ return t !== drop.getAttribute('data-cedrop'); });
+      ceRender();
+      return;
+    }
+    ceWrap.classList.toggle('open');
+    cePicker.setAttribute('aria-expanded', ceWrap.classList.contains('open'));
+  });
+  ceMenu.addEventListener('click', function(e){
+    var opt = e.target.closest('[data-cepick]'); if(!opt) return;
+    var t = opt.getAttribute('data-cepick');
+    if(cePicked.indexOf(t) > -1) cePicked = cePicked.filter(function(x){ return x !== t; });
+    else cePicked.push(t);
+    ceRender();
+  });
+  document.addEventListener('click', function(e){
+    if(ceWrap.classList.contains('open') && !ceWrap.contains(e.target)){
+      ceWrap.classList.remove('open');
+      cePicker.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+var ceModal = simpleModal({
+  id: 'ce', openSelector: '[data-open-expert]', closeAttr: 'data-ce-close',
+  submitId: 'ce-submit', errId: 'ce-err', doneMsgId: 'ce-done-msg',
+  validate: function(){
+    var miss = [];
+    if(!document.getElementById('ce-name').value.trim()) miss.push('your full name');
+    if(!EMAIL_RE.test(document.getElementById('ce-email').value.trim())) miss.push('a valid email');
+    return miss;
+  },
+  message: function(){
+    var topics = cePicked.length ? ' about ' + cePicked.join(', ').toLowerCase() : '';
+    return 'Thanks \u2014 a Jeff Brown Yachts specialist will be in touch' + topics +
+           ' at ' + document.getElementById('ce-email').value.trim() + ' shortly.';
+  }
+});
+
 /* ---------- share modal ---------- */
 var shr = document.getElementById('shr');
 var shrBtn = document.getElementById('share-btn');
@@ -702,6 +770,7 @@ if(lbx){
   lbx.querySelector('.lbx-next').addEventListener('click', function(){ show(idx + 1); });
 }
 document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape' && ceModal && ceModal.el.classList.contains('open')){ ceModal.close(); return; }
   if(e.key === 'Escape' && rsModal && rsModal.el.classList.contains('open')){ rsModal.close(); return; }
   if(e.key === 'Escape' && ntModal && ntModal.el.classList.contains('open')){ ntModal.close(); return; }
   if(e.key === 'Escape' && paModal && paModal.el.classList.contains('open')){ paModal.close(); return; }
