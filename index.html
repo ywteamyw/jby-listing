@@ -206,11 +206,11 @@ h1.listing-title{font-family:var(--mes);font-weight:400;font-size:24px;line-heig
 .btn-ghost{font-family:var(--mes);font-weight:300;font-size:12px;line-height:18px;text-transform:uppercase;
   color:var(--text);border:1px solid var(--text);border-radius:2px;height:36px;padding:0 20px;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .25s,color .25s;white-space:nowrap}
-.btn-ghost:hover{background:var(--text);color:#fff}
+.btn-ghost:hover{background:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.6);color:#fff}
 .btn-sm{font-family:var(--mes);font-weight:300;font-size:12px;line-height:18px;text-transform:uppercase;
   color:var(--text);border:1px solid var(--text);border-radius:2px;height:36px;padding:0 20px;
   display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .25s,color .25s}
-.btn-sm:hover{background:var(--text);color:#fff}
+.btn-sm:hover{background:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.6);color:#fff}
 .btn-sm svg{width:14px;height:14px}
 
 /* warranties */
@@ -263,7 +263,7 @@ h1.listing-title{font-family:var(--mes);font-weight:400;font-size:24px;line-heig
 .ev-foot{display:flex;gap:8px;margin-top:18px}
 .ev-foot .btn-sm{flex:1}
 .ev-bell{width:40px;flex:0 0 auto;height:36px;border:1px solid var(--text);border-radius:2px;display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s}
-.ev-bell:hover{background:var(--text);color:#fff}
+.ev-bell:hover{background:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.6);color:#fff}
 .ev-bell svg{width:15px;height:15px}
 
 .ip{flex:0 0 426px;background:#fff;box-shadow:var(--sh);border-radius:4px;overflow:hidden;transition:box-shadow .3s ease}
@@ -304,7 +304,7 @@ h1.listing-title{font-family:var(--mes);font-weight:400;font-size:24px;line-heig
 .btn-out{display:flex;align-items:center;justify-content:center;width:100%;height:36px;border:1px solid var(--text);color:var(--text);
   font-family:var(--mes);font-weight:300;font-size:12px;line-height:18px;text-transform:uppercase;border-radius:2px;
   padding:0 20px;margin-top:8px;background:transparent;transition:background .25s,color .25s}
-.btn-out:hover{background:var(--text);color:#fff}
+.btn-out:hover{background:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.6);color:#fff}
 .side-foot{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .side-foot .est{font-family:var(--myr);font-weight:400;font-size:16px;line-height:24px;color:var(--text)}
 
@@ -596,9 +596,10 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
 .st input,.st textarea,.st select,.shr input{font-size:16px;line-height:24px}
 .st .field input{height:44px}
 .st .field textarea{padding-top:12px}
-.st .btn-navy,.st .btn-out,.st .btn-ghost,.st .btn-sm{font-size:16px;line-height:20px;height:40px}
-.st .st-foot .btn-out,.st .st-foot .btn-navy{min-width:170px}
-.st .ev-bell{height:40px}
+.st .btn-navy,.st .btn-out,.st .btn-ghost,.st .btn-sm{font-size:16px;line-height:20px;height:36px}
+.st .st-foot .btn-out,.st .st-foot .btn-navy{min-width:148px;padding:0 18px}
+/* field labels sit on the same left edge as the field text (inputs carry 12px of padding) */
+.st .st-lbl,.st .rs-lbl,.st .rm-msg .lbl{padding-left:12px}
 
 /* ============ SHARE MODAL ============ */
 .shr{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:32px;
@@ -628,7 +629,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
   border:1px solid var(--text);border-radius:2px;background:transparent;color:var(--text);
   font-family:var(--mes);font-weight:300;font-size:16px;line-height:20px;text-transform:uppercase;
   transition:background .25s,color .25s}
-.shr-copy:hover{background:var(--text);color:#fff}
+.shr-copy:hover{background:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.6);color:#fff}
 @media (prefers-reduced-motion:reduce){.shr-panel{transition:none;transform:none}}
 @media (max-width:600px){
   .shr{padding:20px}
