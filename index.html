@@ -583,20 +583,14 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
 
 /* contact an expert modal — navy header band, single full-width action */
 .ce .st-panel{width:min(600px,100%)}
-.ce-head{background:var(--navy);color:#fff;padding:22px 40px;border-radius:4px 4px 0 0}
-.ce-head h3{font-family:var(--mes);font-weight:300;font-size:20px;line-height:28px;text-transform:uppercase;color:#fff;margin:0}
-.ce .st-close{top:10px;right:10px;color:rgba(255,255,255,0.72)}
-.ce .st-close:hover{color:#fff}
-.ce .st-body{padding:26px 40px 30px}
+.ce .st-body{padding:32px 40px 28px}
 .ce .st-lbl{display:block;font-family:var(--myr);font-weight:300;font-size:14px;line-height:20px;color:var(--secondary);margin-bottom:6px}
+.ce-topics{position:relative;margin-top:22px}
 .ce .f-grid{margin-top:20px}
 .ce .field.full{margin-top:20px}
 .ce .field textarea{height:96px}
-.ce .st-foot{justify-content:stretch;border-top:0;padding:0 40px 32px}
-.ce .st-foot .btn-navy{width:100%;height:44px;font-size:14px;line-height:20px}
 .ce .st-done{padding:56px 40px 56px}
-.ce-topics{position:relative}
-@media (max-width:600px){.ce .st-body{padding:22px 22px 24px}.ce .st-foot{padding:0 22px 24px}.ce .f-grid{grid-template-columns:1fr}}
+@media (max-width:600px){.ce .st-body{padding:44px 22px 24px}.ce .f-grid{grid-template-columns:1fr}}
 
 /* ============ SHARE MODAL ============ */
 .shr{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:32px;
@@ -1433,9 +1427,8 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
   <div class="st-panel">
     <button class="st-close" type="button" data-ce-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
 
-    <div class="ce-head"><h3 id="ce-title">Get expert guidance</h3></div>
-
     <div class="st-body">
+      <h3 id="ce-title">Get expert guidance</h3>
       <form id="ce-form" novalidate>
         <div class="ce-topics" id="ce-topics">
           <span class="st-lbl">Interested in</span>
@@ -1461,6 +1454,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
     </div>
 
     <div class="st-foot">
+      <button class="btn-out" type="button" data-ce-close>Cancel</button>
       <button class="btn-navy" type="button" id="ce-submit">Request information</button>
     </div>
   </div>
