@@ -597,8 +597,9 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--secondary);bor
 .st input,.st textarea,.st select,.shr input{font-size:16px;line-height:24px}
 .st .field input{height:44px}
 .st .field textarea{padding-top:12px}
-/* field labels sit on the same left edge as the field text (inputs carry 12px of padding) */
-.st .st-lbl,.st .rs-lbl,.st .rm-msg .lbl{padding-left:12px}
+/* one left edge in modals: title, label, placeholder and the field's rule all start at 40px */
+.st .field input,.st .field textarea,.st .st-phone select,.st .nt-select select{padding-left:0}
+.st .rs-picker{padding-left:0}
 
 /* ============ SHARE MODAL ============ */
 .shr{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:32px;
